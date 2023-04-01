@@ -19,25 +19,32 @@ class RichtungsvektorErsteGleichung:
         self.richtungsvektor_x = richtungsvektor_x
 
 
-class OrtsvektorZweiteGleichung:
-    def __init__(self, ortsvektor_x, ortsvektor_y, ortsvektor_z):
-        self.ortsvektor_z = ortsvektor_z
-        self.ortsvektor_y = ortsvektor_y
-        self.ortsvektor_x = ortsvektor_x
-
-
-class StuetzvektorZweiteGleichung:
+class StuetzvektorErsteGleichung_2_Geraden:
     def __init__(self, stuetzvektor_x, stuetzvektor_y, stuetzvektor_z):
         self.stuetzvektor_z = stuetzvektor_z
         self.stuetzvektor_y = stuetzvektor_y
         self.stuetzvektor_x = stuetzvektor_x
 
 
-class RichtungsvektorZweiteGleichung:
+class RichtungsvektorErsteGleichung_2_Geraden:
     def __init__(self, richtungsvektor_x, richtungsvektor_y, richtungsvektor_z):
         self.richtungsvektor_z = richtungsvektor_z
         self.richtungsvektor_y = richtungsvektor_y
         self.richtungsvektor_x = richtungsvektor_x
+
+
+class StuetzvektorZweiteGleichung_2_Geraden:
+    def __init__(self, stuetzvektor_x_2, stuetzvektor_y_2, stuetzvektor_z_2):
+        self.stuetzvektor_z_2 = stuetzvektor_z_2
+        self.stuetzvektor_y_2 = stuetzvektor_y_2
+        self.stuetzvektor_x_2 = stuetzvektor_x_2
+
+
+class RichtungsvektorZweiteGleichung_2_Geraden:
+    def __init__(self, richtungsvektor_x_2, richtungsvektor_y_2, richtungsvektor_z_2):
+        self.richtungsvektor_z_2 = richtungsvektor_z_2
+        self.richtungsvektor_y_2 = richtungsvektor_y_2
+        self.richtungsvektor_x_2 = richtungsvektor_x_2
 
 
 class T:
@@ -89,16 +96,19 @@ def abfrage_1_gleichung():
     richtungsvektor_z = int(input("Richtungsvektor Koordinate z\n> "))
 
     ortsvektor_1_gleichung = OrtsvektorErsteGleichung(ortsvektor_x, ortsvektor_y, ortsvektor_z)
-    stuetzvektor_1_gleichung = StuetzvektorErsteGleichung(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
+    stuetzvektor_1_gleichung = StuetzvektorErsteGleichung_2_Geraden(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
     richtungsvektor_1_gleichung = RichtungsvektorErsteGleichung(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
 
     return ortsvektor_1_gleichung, stuetzvektor_1_gleichung, richtungsvektor_1_gleichung
 
 
-def gleichung_aufstellen_punktprobe(ortsvektor, stuetzvektor, richtungsvektor):
-    t_x = ortsvektor.ortsvektor_x - richtungsvektor.richtungsvektor_x / stuetzvektor.stuetzvektor_x
-    t_y = ortsvektor.ortsvektor_y - richtungsvektor.richtungsvektor_y / stuetzvektor.stuetzvektor_y
-    t_z = ortsvektor.ortsvektor_z - richtungsvektor.richtungsvektor_z / stuetzvektor.stuetzvektor_z
+def gleichung_aufstellen_punktprobe(ortsvektor_1_gleichung, stuetzvektor_1_gleichung, richtungsvektor_1_gleichung):
+    t_x = ortsvektor_1_gleichung.ortsvektor_x - richtungsvektor_1_gleichung.richtungsvektor_x / \
+          stuetzvektor_1_gleichung.stuetzvektor_x
+    t_y = ortsvektor_1_gleichung.ortsvektor_y - richtungsvektor_1_gleichung.richtungsvektor_y / \
+          stuetzvektor_1_gleichung.stuetzvektor_y
+    t_z = ortsvektor_1_gleichung.ortsvektor_z - richtungsvektor_1_gleichung.richtungsvektor_z / \
+          stuetzvektor_1_gleichung.stuetzvektor_z
 
     t = T(t_x, t_y, t_z)
 
@@ -112,30 +122,40 @@ def t_vergleichen(t):
         print("Der Punkt liegt nicht auf der Geraden")
 
 
-def abfrage_2_gleichung():
+def abfrage_2_gleichungen():
 
-    ortsvektor_x = int(input("Ortsvektor Koordinate x\n> "))
-    ortsvektor_y = int(input("Ortsvektor Koordinate y\n> "))
-    ortsvektor_z = int(input("Ortsvektor Koordinate z\n> "))
+    stuetzvektor_x = int(input("1. Gleichung: Stützvektor Koordinate x\n> "))
+    stuetzvektor_y = int(input("1. Gleichung: Stützvektor Koordinate y\n> "))
+    stuetzvektor_z = int(input("1. Gleichung: Stützvektor Koordinate z\n> "))
 
-    stuetzvektor_x = int(input("Stützvektor Koordinate x\n> "))
-    stuetzvektor_y = int(input("Stützvektor Koordinate y\n> "))
-    stuetzvektor_z = int(input("Stützvektor Koordinate z\n> "))
+    richtungsvektor_x = int(input("1. Gleichung: Richtungsvektor Koordinate x\n> "))
+    richtungsvektor_y = int(input("1. Gleichung: Richtungsvektor Koordinate y\n> "))
+    richtungsvektor_z = int(input("1. Gleichung: Richtungsvektor Koordinate z\n> "))
 
-    richtungsvektor_x = int(input("Richtungsvektor Koordinate x\n> "))
-    richtungsvektor_y = int(input("Richtungsvektor Koordinate y\n> "))
-    richtungsvektor_z = int(input("Richtungsvektor Koordinate z\n> "))
+    stuetzvektor_x_2 = int(input("2. Gleichung: Stützvektor Koordinate x\n> "))
+    stuetzvektor_y_2 = int(input("2. Gleichung: Stützvektor Koordinate y\n> "))
+    stuetzvektor_z_2 = int(input("2. Gleichung: Stützvektor Koordinate z\n> "))
 
-    ortsvektor_2_gleichung = OrtsvektorZweiteGleichung(ortsvektor_x, ortsvektor_y, ortsvektor_z)
-    stuetzvektor_2_gleichung = StuetzvektorZweiteGleichung(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
-    richtungsvektor_2_gleichung = RichtungsvektorZweiteGleichung(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
+    richtungsvektor_x_2 = int(input("2. Gleichung: Richtungsvektor Koordinate x\n> "))
+    richtungsvektor_y_2 = int(input("2. Gleichung: Richtungsvektor Koordinate y\n> "))
+    richtungsvektor_z_2 = int(input("2. Gleichung: Richtungsvektor Koordinate z\n> "))
 
-    return ortsvektor_2_gleichung, stuetzvektor_2_gleichung, richtungsvektor_2_gleichung
+    stuetzvektor_1 = StuetzvektorErsteGleichung_2_Geraden(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
+    richtungsvektor_1 = RichtungsvektorErsteGleichung_2_Geraden(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
+    stuetzvektor_2 = StuetzvektorZweiteGleichung_2_Geraden(stuetzvektor_x_2, stuetzvektor_y_2, stuetzvektor_z_2)
+    richtungsvektor_2 = RichtungsvektorZweiteGleichung_2_Geraden(richtungsvektor_x_2, richtungsvektor_y_2,
+                                                                 richtungsvektor_z_2)
+
+    return stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2
+
+
+def gleichung_aufstellen_schnittpunkt():
+    pass
 
 
 def punktprobe():
-    ortsvektor, stuetzvektor, richtungsvektor = abfrage_1_gleichung()
-    t = gleichung_aufstellen_punktprobe(ortsvektor, stuetzvektor, richtungsvektor)
+    ortsvektor_1_gleichung, stuetzvektor_1_gleichung, richtungsvektor_1_gleichung = abfrage_1_gleichung()
+    t = gleichung_aufstellen_punktprobe(ortsvektor_1_gleichung, stuetzvektor_1_gleichung, richtungsvektor_1_gleichung)
     t_vergleichen(t)
 
 

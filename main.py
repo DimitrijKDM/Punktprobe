@@ -72,3 +72,5 @@ def punktprobe():
 
 if __name__ == '__main__':
     punktprobe()
+
+# todo: Schnittpunkte berechnen, Lineare Abhängigkeit berechnen

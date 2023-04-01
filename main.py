@@ -55,12 +55,23 @@ def abfrage_allgemein():
                 punktprobe()
                 break
             elif zwei_oder_eine_gleichung == 2:
-                pass
+                abfrage_schnittpunkte_oder_abhaengigkeit()
                 break
             else:
                 print("Only 2 or 1 allowed!")
         except ValueError:
             print("Invalid Value!")
+
+
+def abfrage_schnittpunkte_oder_abhaengigkeit():
+    while True:
+        schnittpunkte_oder_abhaengigkeit = input("Schnittpunkte oder Lineare Abhängigkeit berechnen?\n> ")
+        if schnittpunkte_oder_abhaengigkeit.lower() == "schnittpunkte":
+            pass
+        elif schnittpunkte_oder_abhaengigkeit.lower() == "lineare abhängigkeit":
+            pass
+        else:
+            print("Invalid Value! <Schnittpunkte> oder <Lineare Abhängigkeit> eingeben")
 
 
 def abfrage_1_gleichung():

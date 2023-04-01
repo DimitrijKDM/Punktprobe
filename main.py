@@ -26,6 +26,19 @@ class T:
         self.t_x = t_x
 
 
+def abfrage_allgemein():
+    try:
+        zwei_oder_eine_gleichung = int(input("2 oder 1 Gleichung?\n> "))
+        if zwei_oder_eine_gleichung == 1:
+            punktprobe()
+        elif zwei_oder_eine_gleichung == 2:
+            pass
+        else:
+            print("Only 2 or 1 allowed!")
+    except ValueError:
+        print("Invalid Value!")
+
+
 def abfrage_1_gleichung():
 
     ortsvektor_x = int(input("Ortsvektor Koordinate x\n> "))
@@ -71,6 +84,6 @@ def punktprobe():
 
 
 if __name__ == '__main__':
-    punktprobe()
+    abfrage_allgemein()
 
 # todo: Schnittpunkte berechnen, Lineare Abhängigkeit berechnen

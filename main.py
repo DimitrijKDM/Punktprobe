@@ -64,11 +64,11 @@ def t_vergleichen(t):
         print("Der Punkt liegt nicht auf der Geraden")
 
 
-def main():
+def punktprobe():
     ortsvektor, stuetzvektor, richtungsvektor = abfrage()
     t = gleichung_aufstellen(ortsvektor, stuetzvektor, richtungsvektor)
     t_vergleichen(t)
 
 
 if __name__ == '__main__':
-    main()
+    punktprobe()

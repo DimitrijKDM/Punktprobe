@@ -1,18 +1,39 @@
-class Ortsvektor:
+class OrtsvektorErsteGleichung:
     def __init__(self, ortsvektor_x, ortsvektor_y, ortsvektor_z):
         self.ortsvektor_z = ortsvektor_z
         self.ortsvektor_y = ortsvektor_y
         self.ortsvektor_x = ortsvektor_x
 
 
-class Stuetzvektor:
+class StuetzvektorErsteGleichung:
     def __init__(self, stuetzvektor_x, stuetzvektor_y, stuetzvektor_z):
         self.stuetzvektor_z = stuetzvektor_z
         self.stuetzvektor_y = stuetzvektor_y
         self.stuetzvektor_x = stuetzvektor_x
 
 
-class Richtungsvektor:
+class RichtungsvektorErsteGleichung:
+    def __init__(self, richtungsvektor_x, richtungsvektor_y, richtungsvektor_z):
+        self.richtungsvektor_z = richtungsvektor_z
+        self.richtungsvektor_y = richtungsvektor_y
+        self.richtungsvektor_x = richtungsvektor_x
+
+
+class OrtsvektorZweiteGleichung:
+    def __init__(self, ortsvektor_x, ortsvektor_y, ortsvektor_z):
+        self.ortsvektor_z = ortsvektor_z
+        self.ortsvektor_y = ortsvektor_y
+        self.ortsvektor_x = ortsvektor_x
+
+
+class StuetzvektorZweiteGleichung:
+    def __init__(self, stuetzvektor_x, stuetzvektor_y, stuetzvektor_z):
+        self.stuetzvektor_z = stuetzvektor_z
+        self.stuetzvektor_y = stuetzvektor_y
+        self.stuetzvektor_x = stuetzvektor_x
+
+
+class RichtungsvektorZweiteGleichung:
     def __init__(self, richtungsvektor_x, richtungsvektor_y, richtungsvektor_z):
         self.richtungsvektor_z = richtungsvektor_z
         self.richtungsvektor_y = richtungsvektor_y
@@ -56,11 +77,11 @@ def abfrage_1_gleichung():
     richtungsvektor_y = int(input("Richtungsvektor Koordinate y\n> "))
     richtungsvektor_z = int(input("Richtungsvektor Koordinate z\n> "))
 
-    ortsvektor = Ortsvektor(ortsvektor_x, ortsvektor_y, ortsvektor_z)
-    stuetzvektor = Stuetzvektor(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
-    richtungsvektor = Richtungsvektor(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
+    ortsvektor_1_gleichung = OrtsvektorErsteGleichung(ortsvektor_x, ortsvektor_y, ortsvektor_z)
+    stuetzvektor_1_gleichung = StuetzvektorErsteGleichung(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
+    richtungsvektor_1_gleichung = RichtungsvektorErsteGleichung(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
 
-    return ortsvektor, stuetzvektor, richtungsvektor
+    return ortsvektor_1_gleichung, stuetzvektor_1_gleichung, richtungsvektor_1_gleichung
 
 
 def gleichung_aufstellen_punktprobe(ortsvektor, stuetzvektor, richtungsvektor):
@@ -94,11 +115,11 @@ def abfrage_2_gleichung():
     richtungsvektor_y = int(input("Richtungsvektor Koordinate y\n> "))
     richtungsvektor_z = int(input("Richtungsvektor Koordinate z\n> "))
 
-    ortsvektor = Ortsvektor(ortsvektor_x, ortsvektor_y, ortsvektor_z)
-    stuetzvektor = Stuetzvektor(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
-    richtungsvektor = Richtungsvektor(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
+    ortsvektor_2_gleichung = OrtsvektorZweiteGleichung(ortsvektor_x, ortsvektor_y, ortsvektor_z)
+    stuetzvektor_2_gleichung = StuetzvektorZweiteGleichung(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
+    richtungsvektor_2_gleichung = RichtungsvektorZweiteGleichung(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
 
-    return ortsvektor, stuetzvektor, richtungsvektor
+    return ortsvektor_2_gleichung, stuetzvektor_2_gleichung, richtungsvektor_2_gleichung
 
 
 def punktprobe():

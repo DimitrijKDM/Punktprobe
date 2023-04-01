@@ -27,16 +27,19 @@ class T:
 
 
 def abfrage_allgemein():
-    try:
-        zwei_oder_eine_gleichung = int(input("2 oder 1 Gleichung?\n> "))
-        if zwei_oder_eine_gleichung == 1:
-            punktprobe()
-        elif zwei_oder_eine_gleichung == 2:
-            pass
-        else:
-            print("Only 2 or 1 allowed!")
-    except ValueError:
-        print("Invalid Value!")
+    while True:
+        try:
+            zwei_oder_eine_gleichung = int(input("2 oder 1 Gleichung?\n> "))
+            if zwei_oder_eine_gleichung == 1:
+                punktprobe()
+                break
+            elif zwei_oder_eine_gleichung == 2:
+                pass
+                break
+            else:
+                print("Only 2 or 1 allowed!")
+        except ValueError:
+            print("Invalid Value!")
 
 
 def abfrage_1_gleichung():
@@ -75,6 +78,27 @@ def t_vergleichen(t):
         print("Der Punkt liegt auf der Geraden")
     else:
         print("Der Punkt liegt nicht auf der Geraden")
+
+
+def abfrage_2_gleichung():
+
+    ortsvektor_x = int(input("Ortsvektor Koordinate x\n> "))
+    ortsvektor_y = int(input("Ortsvektor Koordinate y\n> "))
+    ortsvektor_z = int(input("Ortsvektor Koordinate z\n> "))
+
+    stuetzvektor_x = int(input("Stützvektor Koordinate x\n> "))
+    stuetzvektor_y = int(input("Stützvektor Koordinate y\n> "))
+    stuetzvektor_z = int(input("Stützvektor Koordinate z\n> "))
+
+    richtungsvektor_x = int(input("Richtungsvektor Koordinate x\n> "))
+    richtungsvektor_y = int(input("Richtungsvektor Koordinate y\n> "))
+    richtungsvektor_z = int(input("Richtungsvektor Koordinate z\n> "))
+
+    ortsvektor = Ortsvektor(ortsvektor_x, ortsvektor_y, ortsvektor_z)
+    stuetzvektor = Stuetzvektor(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
+    richtungsvektor = Richtungsvektor(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
+
+    return ortsvektor, stuetzvektor, richtungsvektor
 
 
 def punktprobe():

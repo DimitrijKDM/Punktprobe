@@ -26,7 +26,7 @@ class T:
         self.t_x = t_x
 
 
-def abfrage():
+def abfrage_1_gleichung():
 
     ortsvektor_x = int(input("Ortsvektor Koordinate x\n> "))
     ortsvektor_y = int(input("Ortsvektor Koordinate y\n> "))
@@ -47,7 +47,7 @@ def abfrage():
     return ortsvektor, stuetzvektor, richtungsvektor
 
 
-def gleichung_aufstellen(ortsvektor, stuetzvektor, richtungsvektor):
+def gleichung_aufstellen_punktprobe(ortsvektor, stuetzvektor, richtungsvektor):
     t_x = ortsvektor.ortsvektor_x - richtungsvektor.richtungsvektor_x / stuetzvektor.stuetzvektor_x
     t_y = ortsvektor.ortsvektor_y - richtungsvektor.richtungsvektor_y / stuetzvektor.stuetzvektor_y
     t_z = ortsvektor.ortsvektor_z - richtungsvektor.richtungsvektor_z / stuetzvektor.stuetzvektor_z
@@ -65,8 +65,8 @@ def t_vergleichen(t):
 
 
 def punktprobe():
-    ortsvektor, stuetzvektor, richtungsvektor = abfrage()
-    t = gleichung_aufstellen(ortsvektor, stuetzvektor, richtungsvektor)
+    ortsvektor, stuetzvektor, richtungsvektor = abfrage_1_gleichung()
+    t = gleichung_aufstellen_punktprobe(ortsvektor, stuetzvektor, richtungsvektor)
     t_vergleichen(t)
 
 

@@ -208,4 +208,4 @@ def schnittpunkt_probe():
 if __name__ == '__main__':
     abfrage_allgemein()
 
-# todo: Lineare Abhängigkeit berechnen
+# todo: Lineare Abhängigkeit berechnen, Mathematische Korrektheit testen

@@ -74,9 +74,11 @@ def abfrage_schnittpunkte_oder_abhaengigkeit():
     while True:
         schnittpunkte_oder_abhaengigkeit = input("Schnittpunkte oder Lineare Abhängigkeit berechnen?\n> ")
         if schnittpunkte_oder_abhaengigkeit.lower() == "schnittpunkte":
-            pass
+            schnittpunkt_probe()
+            quit()
         elif schnittpunkte_oder_abhaengigkeit.lower() == "lineare abhängigkeit":
             pass
+            quit()
         else:
             print("Invalid Value! <Schnittpunkte> oder <Lineare Abhängigkeit> eingeben")
 
@@ -143,23 +145,48 @@ def abfrage_2_gleichungen():
     stuetzvektor_1 = StuetzvektorErsteGleichung2Geraden(stuetzvektor_x, stuetzvektor_y, stuetzvektor_z)
     richtungsvektor_1 = RichtungsvektorErsteGleichung2Geraden(richtungsvektor_x, richtungsvektor_y, richtungsvektor_z)
     stuetzvektor_2 = StuetzvektorZweiteGleichung2Geraden(stuetzvektor_x_2, stuetzvektor_y_2, stuetzvektor_z_2)
-    richtungsvektor_2 = RichtungsvektorZweiteGleichung2Geraden(richtungsvektor_x_2, richtungsvektor_y_2, richtungsvektor_z_2)
+    richtungsvektor_2 = RichtungsvektorZweiteGleichung2Geraden(richtungsvektor_x_2, richtungsvektor_y_2,
+                                                               richtungsvektor_z_2)
 
     return stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2
 
 
 def gleichung_aufstellen_schnittpunkt(stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2):
-    n = stuetzvektor_1.stuetzvektor_y + richtungsvektor_1.richtungsvektor_y * stuetzvektor_2.stuetzvektor_x - \
-        richtungsvektor_1.richtungsvektor_y * stuetzvektor_1.stuetzvektor_x / richtungsvektor_2.richtungsvektor_x / \
-        (richtungsvektor_1.richtungsvektor_y / -1) / richtungsvektor_2.richtungsvektor_x / 2
+    n = stuetzvektor_1.stuetzvektor_y + richtungsvektor_1.richtungsvektor_y * stuetzvektor_2.stuetzvektor_x_2 - \
+        richtungsvektor_1.richtungsvektor_y * stuetzvektor_1.stuetzvektor_x / richtungsvektor_2.richtungsvektor_x_2 / \
+        (richtungsvektor_1.richtungsvektor_y / -1) / richtungsvektor_2.richtungsvektor_x_2 / 2
 
-    u = stuetzvektor_2.stuetzvektor_x + richtungsvektor_2.richtungsvektor_x * n - stuetzvektor_1.stuetzvektor_x / \
-        richtungsvektor_2.richtungsvektor_x
+    u = stuetzvektor_2.stuetzvektor_x_2 + richtungsvektor_2.richtungsvektor_x_2 * n - stuetzvektor_1.stuetzvektor_x / \
+        richtungsvektor_2.richtungsvektor_x_2
 
     n = int(n)
     u = int(u)
 
     return u, n
+
+
+def unbekannte_vergleichen(u, n, stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2):
+    punkt_erste_gleichung_x = stuetzvektor_1.stuetzvektor_x + richtungsvektor_1.richtungsvektor_x * n
+    punkt_erste_gleichung_y = stuetzvektor_1.stuetzvektor_y + richtungsvektor_1.richtungsvektor_y * n
+    punkt_erste_gleichung_z = stuetzvektor_1.stuetzvektor_z + richtungsvektor_1.richtungsvektor_z * n
+
+    punkt_zweite_gleichung_x = stuetzvektor_2.stuetzvektor_x_2 + richtungsvektor_2.richtungsvektor_x_2 * u
+    punkt_zweite_gleichung_y = stuetzvektor_2.stuetzvektor_y_2 + richtungsvektor_2.richtungsvektor_y_2 * u
+    punkt_zweite_gleichung_z = stuetzvektor_2.stuetzvektor_z_2 + richtungsvektor_2.richtungsvektor_z_2 * u
+
+    punkt_erste_gleichung_zusammen = f"{punkt_erste_gleichung_x} + {punkt_erste_gleichung_y} + " \
+                                     f"{punkt_erste_gleichung_z}"
+    punkt_zweite_gleichung_zusammen = f"{punkt_zweite_gleichung_x} + {punkt_zweite_gleichung_y} + " \
+                                      f"{punkt_zweite_gleichung_z}"
+
+    return punkt_erste_gleichung_zusammen, punkt_zweite_gleichung_zusammen
+
+
+def schnittpunkt_vergleichen(punkt_erste_gleichung_zusammen, punkt_zweite_gleichung_zusammen):
+    if punkt_erste_gleichung_zusammen == punkt_zweite_gleichung_zusammen:
+        print("Die Geraden schneiden sich")
+    else:
+        print("Die Geraden schneiden sich nicht")
 
 
 def punktprobe():
@@ -168,7 +195,17 @@ def punktprobe():
     t_vergleichen(t)
 
 
+def schnittpunkt_probe():
+    stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2 = abfrage_2_gleichungen()
+    u, n = gleichung_aufstellen_schnittpunkt(stuetzvektor_1, stuetzvektor_2, richtungsvektor_1, richtungsvektor_2)
+    punkt_erste_gleichung_zusammen, punkt_zweite_gleichung_zusammen = unbekannte_vergleichen(u, n, stuetzvektor_1,
+                                                                                             stuetzvektor_2,
+                                                                                             richtungsvektor_1,
+                                                                                             richtungsvektor_2)
+    schnittpunkt_vergleichen(punkt_erste_gleichung_zusammen, punkt_zweite_gleichung_zusammen)
+
+
 if __name__ == '__main__':
     abfrage_allgemein()
 
-# todo: Schnittpunkte berechnen, Lineare Abhängigkeit berechnen
+# todo: Lineare Abhängigkeit berechnen
